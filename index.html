@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional portfolio of Suchith Pavan, a skilled Web developer seeking job opportunities.">
+    <meta name="keywords" content="Suchith Pavan, portfolio, Web developer, hire, resume">
+    <meta name="author" content="Suchith Pavan">
+    <title>Suchith Pavan Portfolio</title>
+    <!-- Font Awesome CDN for skill icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #hero {
+            background: #3498db;
+            color: white;
+            text-align: center;
+            padding-top: 7rem;
+        }
+
+        #hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background: #34495e;
+        }
+
+        #about, #skills, #projects, #resume, #contact {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .skills-grid {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding: 1rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: #3498db #f1f1f1;
+        }
+
+        .skills-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .skills-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .skills-grid::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 4px;
+        }
+
+        .skill {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 120px; /* Fits ~5 skills on a typical screen */
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill i {
+            font-size: 2rem;
+            color: #3498db;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .project {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+        }
+
+        input, textarea {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 0.8rem;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            #hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .skill {
+                min-width: 100px; /* Adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Suchith Pavan</h1>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h2>Welcome to My Portfolio</h2>
+        <p>Hi, I'm Suchith Pavan, a passionate Web developer ready to contribute to innovative projects.</p>
+        <a href="#contact" class="btn">Hire Me</a>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I'm a passionate Information Web developer with a strong foundation in programming, databases, and web technologies. I specialize in Python, JavaScript, and full-stack development, and I’m highly interested in cloud computing, particularly exploring AWS services and certifications. With a strong enthusiasm for continuous learning and adaptability, I aim to contribute to innovative teams while building expertise in scalable, secure, and cloud-driven solutions.</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill">
+                <i class="fab fa-js"></i>
+                <span>JavaScript</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-python"></i>
+                <span>Python</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-react"></i>
+                <span>React</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-node-js"></i>
+                <span>Node.js</span>
+            </div>
+            <div class="skill">
+                <i class="fas fa-database"></i>
+                <span>SQL</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-git-alt"></i>
+                <span>Git</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-aws"></i>
+                <span>AWS</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-html5"></i>
+                <span>HTML & CSS</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-django"></i>
+                <span>Django</span>
+            </div>
+            <div class="skill">
+                <i class="fas fa-exchange-alt"></i>
+                <span>RESTful APIs</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-linux"></i>
+                <span>Linux</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project">
+                <h3>Cloud-Hosted Weather Dashboard</h3>
+                <p>A responsive weather application built with React and Node.js, integrated with OpenWeather API. Deployed on AWS using S3 for static hosting, Lambda for backend logic, and CloudFront for fast content delivery.</p>
+                <a href="[your-github-or-demo-link]" class="btn" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Task Manager with Authentication</h3>
+                <p>A full-stack task management app built using Python (Flask), MongoDB, and JWT authentication. Deployed on AWS EC2 with Docker for containerization, showcasing secure authentication and scalable architecture.</p>
+                <a href="[your-github-or-demo-link]" class="btn" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume">
+        <h2>Resume</h2>
+        <p>Download my resume to learn more about my experience and qualifications.</p>
+        <a href="P_Suchith_Pavan_Resume.pdf" class="btn" download>Download Resume</a>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="https://formspree.io/f/mpwyrkpp" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Suchith Pavan. All rights reserved.</p>
+        <p>
+            <a href="https://www.linkedin.com/in/suchith-pavan-6a871821a/" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/Suchith-17" target="_blank">GitHub</a> |
+            <a href="mailto:suchithpavan07@gmail.com">Email</a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
