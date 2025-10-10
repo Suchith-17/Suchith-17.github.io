@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Professional portfolio of Suchith Pavan, a web developer." />
+  <title>Suchith Pavan — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    /* ---- GLOBAL STYLES ---- */
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#06070a;
+      color:#e6edf3;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height:100vh;
+      position:relative;
+    }
+    #bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-1;}
+    .header{position:fixed;top:0;width:100%;background:rgba(6,8,12,0.55);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.03);z-index:1000;}
+    .nav{max-width:1200px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{color:#9aa7ff;font-weight:700;font-size:1.4rem;}
+    .nav-links{display:flex;gap:22px;}
+    .nav-links a{color:#dbe6ff;text-decoration:none;font-weight:500;position:relative;padding:6px 0;transition:color .22s ease;}
+    .nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,#89a7ff,#b084ff);transition:width .22s ease;}
+    .nav-links a:hover{color:#89a7ff;}
+    .nav-links a:hover::after{width:100%;}
+    .mobile-toggle{display:none;font-size:1.3rem;color:#dbe6ff;cursor:pointer;}
+    .hero{min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 20px 60px;}
+    .hero-inner{max-width:900px;}
+    .hero h1{font-size:clamp(28px,4.6vw,48px);margin-bottom:12px;background:linear-gradient(90deg,#9aa7ff,#b084ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .hero p{color:#cfd9ff;font-size:1.05rem;margin-bottom:20px;opacity:0;transform:translateY(18px);animation:fadeUp 1s ease forwards 0.25s;}
+    .cta{display:inline-block;padding:12px 26px;background:linear-gradient(90deg,#6f8aff,#b084ff);color:#041028;border-radius:28px;font-weight:600;text-decoration:none;box-shadow:0 8px 30px rgba(112,119,255,0.12);transition:.18s;opacity:0;transform:translateY(24px);animation:fadeUp 1s ease forwards 0.6s;}
+    .cta:hover{transform:translateY(-3px) scale(1.02);}
+    section{padding:80px 0;}
+    .section-title{font-size:1.6rem;color:#9aa7ff;margin-bottom:18px;position:relative;}
+    .section-title::after{content:'';position:absolute;bottom:-10px;left:0;height:3px;width:84px;background:linear-gradient(90deg,#6f8aff,#b084ff);border-radius:3px;}
+    .container{max-width:1100px;margin:0 auto;padding:36px 22px;}
+    .about-text{font-size:1.03rem;line-height:1.7;color:#cfd9ff;max-width:600px;margin:0 auto 20px;text-align:center;opacity:0;transform:translateY(24px);transition:.7s;}
+    .education-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:16px;}
+    .edu-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);padding:16px;border-radius:12px;transition:.28s;}
+    .edu-card:hover{transform:translateY(-8px);}
+    .edu-card h3{color:#bfe0ff;margin-bottom:6px;}
+    .edu-card p{color:#d7e2ff;font-size:0.95rem;}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px;}
+    .skill-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);padding:14px;border-radius:10px;transition:.22s;}
+    .skill-card:hover{transform:translateY(-6px);}
+    .projects-wrap{margin-top:14px;display:flex;gap:16px;overflow:auto;padding-bottom:6px;}
+    .project{min-width:280px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);padding:14px;border-radius:12px;transition:.22s;}
+    .project img{width:100%;border-radius:8px;margin-bottom:12px;}
+    .contact-form{max-width:600px;margin:24px auto 0;background:rgba(255,255,255,0.02);padding:18px;border-radius:12px;display:flex;flex-direction:column;gap:1rem;}
+    .contact-input,.contact-textarea{padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:rgba(10,12,18,0.6);color:#e6edf3;font-size:1rem;}
+    .send-btn{padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,#6f8aff,#b084ff);color:#041028;font-weight:700;border:none;cursor:pointer;width:160px;align-self:center;}
+    .send-btn:hover{transform:translateY(-4px);}
+    footer{text-align:center;padding:26px;color:#9fb0ff;font-size:0.92rem;}
+    footer a{color:#9aa7ff;margin:0 8px;text-decoration:none;}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+    .fade-up{opacity:0;transform:translateY(20px);}
+    .show{opacity:1!important;transform:translateY(0)!important;}
+    @media(max-width:640px){
+      .nav-links{display:none;}
+      .mobile-toggle{display:block;}
+      .nav-links.mobile-active{display:flex;flex-direction:column;background:rgba(6,8,12,0.95);padding:10px;border-radius:8px;gap:8px;position:absolute;top:62px;right:14px;}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <header class="header">
+    <div class="nav">
+      <div class="logo">Suchith Pavan</div>
+      <nav>
+        <div class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-inner">
+        <h1>Hi — I'm Suchith Pavan</h1>
+        <p class="hero-sub fade-up">A passionate Web Developer building modern, accessible, and scalable web apps using JavaScript, Python, and cloud tooling.</p>
+        <a class="cta" href="#contact">Let's Connect</a>
+      </div>
+    </section>
+
+    <section id="about" class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="about-text fade-up">
+        I’m an IT graduate who loves turning ideas into polished web experiences. I build with a focus on clean UI, robust frontend logic, and pragmatic backend services.
+      </p>
+    </section>
+
+       </section>
+    <section id="education" class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="education-grid">
+        <article class="edu-card fade-up" aria-labelledby="edu1">
+          <h3 id="edu1">Secondary Education</h3>
+          <div class="date">May 2016</div>
+          <p>Completed secondary education with a CGPA of <strong>8.5</strong>. Built strong foundations in mathematics and analytical thinking that helped shape my problem solving approach.</p>
+        </article>
+        <article class="edu-card fade-up" aria-labelledby="edu2">
+          <h3 id="edu2">High School Diploma — MPC</h3>
+          <div class="date">April 2018</div>
+          <p>Completed high school with <strong>76%</strong>, majoring in Physics, Chemistry & Mathematics. Strengthened numerical reasoning, logic, and systematic problem solving.</p>
+        </article>
+        <article class="edu-card fade-up" aria-labelledby="edu3">
+          <h3 id="edu3">Bachelor of Technology (Information Technology)</h3>
+          <div class="date">May 2023</div>
+          <p>Graduated with <strong>62%</strong> from Sri Venkateshwara College of Engineering (JNTUA). Gained hands-on experience in web development, databases, and software fundamentals.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="container">
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card fade-up">
+      <div class="skill-head" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <i class="fab fa-js-square" style="font-size:1.5rem;color:#f7df1e;"></i>
+        <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener" style="color:#dbe6ff;text-decoration:none;font-weight:600;">JavaScript</a>
+      </div>
+      <div class="skill-desc">Modern frontend development, DOM manipulation, ES6+, and async programming.</div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-head" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <i class="fab fa-python" style="font-size:1.5rem;color:#3572A5;"></i>
+        <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank" rel="noopener" style="color:#dbe6ff;text-decoration:none;font-weight:600;">Python</a>
+      </div>
+      <div class="skill-desc">Scripting, automation, data handling, and backend development.</div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-head" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <i class="fab fa-html5" style="font-size:1.5rem;color:#E34F26;"></i>
+        <a href="https://en.wikipedia.org/wiki/HTML" target="_blank" rel="noopener" style="color:#dbe6ff;text-decoration:none;font-weight:600;">HTML & CSS</a>
+      </div>
+      <div class="skill-desc">Semantic markup, responsive layouts, and accessible UI patterns.</div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-head" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <i class="fab fa-react" style="font-size:1.5rem;color:#61DAFB;"></i>
+        <a href="https://en.wikipedia.org/wiki/React_(JavaScript_library)" target="_blank" rel="noopener" style="color:#dbe6ff;text-decoration:none;font-weight:600;">React</a>
+      </div>
+      <div class="skill-desc">Component-driven UI, hooks, state management & single-page applications.</div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-head" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <i class="fab fa-node-js" style="font-size:1.5rem;color:#3C873A;"></i>
+        <a href="https://en.wikipedia.org/wiki/Node.js" target="_blank" rel="noopener" style="color:#dbe6ff;text-decoration:none;font-weight:600;">Node.js</a>
+      </div>
+      <div class="skill-desc">Backend APIs, Express, routing, and server-side logic.</div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-head" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <i class="fas fa-database" style="font-size:1.5rem;color:#4DB33D;"></i>
+        <a href="https://en.wikipedia.org/wiki/MongoDB" target="_blank" rel="noopener" style="color:#dbe6ff;text-decoration:none;font-weight:600;">MongoDB</a>
+      </div>
+      <div class="skill-desc">NoSQL document modeling and CRUD operations for web apps.</div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-head" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <i class="fab fa-aws" style="font-size:1.5rem;color:#FF9900;"></i>
+        <a href="https://en.wikipedia.org/wiki/Amazon_Web_Services" target="_blank" rel="noopener" style="color:#dbe6ff;text-decoration:none;font-weight:600;">AWS</a>
+      </div>
+      <div class="skill-desc">Cloud deployment, S3 hosting, and exploration of Lambda & EC2 services.</div>
+    </div>
+  </div>
+</section>
+
+    <section id="projects" class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-wrap">
+        <article class="project fade-up">
+          <img src="https://via.placeholder.com/600x350?text=Smart+Expense+Tracker" alt="Smart Expense Tracker">
+          <h4>Smart Expense Tracker</h4>
+          <p>A full-stack expense manager built with Node.js, Express and MongoDB. Features secure auth, category filters, date-wise analytics and charts to visualize spending patterns.</p>
+          <a href="#" target="_blank"></a>
+        </article>
+        <article class="project fade-up">
+          <img src="https://via.placeholder.com/600x350?text=Weather+Dashboard" alt="Weather Dashboard">
+          <h4>Weather Dashboard</h4>
+          <p>Interactive weather dashboard using public APIs. Shows forecasts, geolocation, favorites and a clean responsive UI with dark mode support.</p>
+          <a href="#" target="_blank"></a>
+        </article>
+        <article class="project fade-up">
+          <img src="https://via.placeholder.com/600x350?text=Task+Manager" alt="Task Manager">
+          <h4>Task Manager</h4>
+          <p>Task manager with authentication, CRUD operations and priority tags. Built with Python (Flask) / MongoDB and containerized for deployment.</p>
+          <a href="#" target="_blank"></a>
+        </article>
+      </div>
+    </section>
+
+    <section id="resume" class="container">
+      <h2 class="section-title">Resume</h2>
+      <p class="about-text fade-up">Download my resume to explore my work.</p>
+      <div style="text-align:center;">
+        <a href="resume.pdf" class="cta" download><i class="fas fa-download"></i> Download Resume</a>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <form class="contact-form fade-up" action="https://formspree.io/f/mpwyrkpp" method="POST">
+        <input type="text" class="contact-input" name="name" placeholder="Your Name" required>
+        <input type="email" class="contact-input" name="email" placeholder="Your Email" required>
+        <textarea class="contact-textarea" name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="send-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Suchith Pavan — Crafted with Passion and Caffeine ☕ |
+      <a href="https://github.com/Suchith-17" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/suchith-pavan-6a871821a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:suchithpavan07@gmail.com"><i class="fas fa-envelope"></i></a>
+    </p>
+  </footer>
+
+  <script>
+    // Background animation
+    (function(){
+      const c=document.getElementById('bg-canvas'),x=c.getContext('2d');
+      let w,h;function resize(){w=c.width=innerWidth;h=c.height=innerHeight;}
+      window.addEventListener('resize',resize);resize();
+      const pts=Array.from({length:80},()=>({x:Math.random()*w,y:Math.random()*h,vx:Math.random()-.5,vy:Math.random()-.5}));
+      function draw(){
+        x.fillStyle='rgba(6,7,10,0.3)';x.fillRect(0,0,w,h);
+        for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;
+          x.beginPath();x.arc(p.x,p.y,1.4,0,Math.PI*2);x.fillStyle='#9aa7ff';x.fill();}
+        requestAnimationFrame(draw);
+      }draw();
+    })();
+
+    // Fade-up intersection animation
+    (function(){
+      const fadeEls=document.querySelectorAll('.fade-up');
+      const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('show');obs.unobserve(x.target);}})},{threshold:.18});
+      fadeEls.forEach(el=>obs.observe(el));
+    })();
+
+    // Mobile nav toggle
+    document.getElementById('mobileToggle').addEventListener('click',()=>{
+      document.getElementById('navLinks').classList.toggle('mobile-active');
+    });
+  </script>
+</body>
+</html>
